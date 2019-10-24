@@ -9,11 +9,14 @@ spec:
    - name: fare-service-container
      image: navkkrnair/10-2019-fare-service:2.0
      imagePullPolicy: Always
+     env:
+      - name: CONFIG-SERVICE
+        value: config-service
      livenessProbe:
        httpGet:
          path: /actuator/health
          port: 8888
-       initialDelaySeconds: 30  
+       initialDelaySeconds: 100  
      ports:
       - containerPort: 8888
         protocol: TCP
