@@ -6,4 +6,8 @@ spring:
   cloud:
     config:
       uri:
-      - http://${CONFIG-SERVER}:8888
+      - http://${CONFIG-SERVICE}:8888
+management:
+  endpoint:
+    health:
+      show-details: always      

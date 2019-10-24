@@ -1,0 +1,36 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: fare-service-pod
+  labels:
+    app: fare-service
+spec:
+  containers:
+   - name: fare-service-container
+     image: navkkrnair/10-2019-fare-service:2.0
+     imagePullPolicy: Always
+     livenessProbe:
+       httpGet:
+         path: /actuator/health
+         port: 8888
+       initialDelaySeconds: 30  
+     ports:
+      - containerPort: 8888
+        protocol: TCP
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fare-service
+  labels:
+    app: fare-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: fare-service
