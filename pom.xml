@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.ams</groupId>
 	<artifactId>fare-service</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
 	<name>fare-service</name>
 	<description>FareService</description>
 
