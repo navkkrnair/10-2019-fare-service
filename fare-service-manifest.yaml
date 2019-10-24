@@ -18,7 +18,8 @@ spec:
          port: 8080
        initialDelaySeconds: 100  
      ports:
-      - containerPort: 8888
+      - name: container-port
+        containerPort: 8080
         protocol: TCP
         
 ---
@@ -32,8 +33,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
+  - name: http
+    port: 80
+    targetPort: container-port
     protocol: TCP
   selector:
     app: fare-service
